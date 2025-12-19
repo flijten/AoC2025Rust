@@ -18,7 +18,7 @@ fn main() {
 
     let mut number_of_fresh_ingredients: i64 = 0;
 
-    'lineIterator: for line in contents.lines() {
+    for line in contents.lines() {
 
         if line.is_empty() {
             finding_ranges = false; //switch to checking ingredients
@@ -33,12 +33,9 @@ fn main() {
             ranges.push(Range { start: start, end: end})
         } else {
             let ingredient_id: i64 = line.parse().unwrap();
-
-            for range in &ranges {
-                if range.contains(ingredient_id) {
-                    number_of_fresh_ingredients += 1;
-                    continue 'lineIterator;
-                }
+            let is_fresh = ranges.iter().any(|range| range.contains(ingredient_id));
+            if is_fresh {
+                number_of_fresh_ingredients += 1;
             }
         }
     }
