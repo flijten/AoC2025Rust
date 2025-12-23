@@ -1,4 +1,6 @@
+mod day6;
 use std::fs;
+use day6::day6;
 
 #[derive(Debug, Copy, Clone)]
 struct Range { start: i64, end: i64}
@@ -10,8 +12,10 @@ impl Range {
 }
 
 fn main() {
-    assignment1();
-    assignment2();
+    // assignment1();
+    // assignment2();
+
+    day6();
 }
 
 fn assignment1() {
